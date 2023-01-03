@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +22,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard/admin', \App\Http\Controllers\EmployeeController::class
-)->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', '\App\Http\Controllers\EmployeeController@emp')->middleware(['auth', 'verified']);
+
+
+//Route::get('/dashboard/admin', \App\Http\Controllers\EmployeeController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 
 

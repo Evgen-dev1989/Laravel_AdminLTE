@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -13,8 +14,16 @@ class EmployeeController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function __invoke(){
-        return view('admin');
+
+
+        return view('dashboard');
     }
+    public function emp(){
+        $Employee=DB::table('employees');
+
+        return view('dashboard', ['data'=>$Employee]);
+    }
+
 
     public function index()
     {
