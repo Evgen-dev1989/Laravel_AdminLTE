@@ -19,24 +19,14 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'Name' => $this->faker->Name,
+            'Employment date' => $this->faker->dateTime,
+            'Phone nubmer' => $this->faker->unique()->phoneNumber,
+            'Email' => $this->faker->unique()->safeEmail,
+            'Salary' => $this->faker->randomDigit,
         ];
     }
-
 }
 
 
-$factory->define(Employee::class, function (Faker $faker) {
-    return [
-        'Name' => $faker->Name,
-        'Position' => $faker->Position,
-        'Employment date' => $faker->EmploymentDate,
-        'Phone nubmer' => $faker->unique()->PhoneNubmer,
-        'Email' => $faker->unique()->safeEmail,
-        'Salary' => $faker->Salary,
-        'created_at' => now(),
-        'updated_at' => now(),
-        'admin_created_id' => now(),
-        'admin_updated_id' => now(),
-    ];
-});
+
