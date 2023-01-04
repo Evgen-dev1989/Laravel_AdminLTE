@@ -13,4 +13,5 @@ class Employee extends Model
     {
         return $this->hasOne(Position::class);
     }
+    protected $table = 'employees';
 }

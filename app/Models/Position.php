@@ -15,5 +15,5 @@ class Position extends Model
     {
         return $this->belongsTo(Employee::class);
     }
-
+    protected $tables = 'positions';
 }

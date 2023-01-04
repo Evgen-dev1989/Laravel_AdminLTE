@@ -16,14 +16,13 @@
             @foreach($data as $date)
                 <form>
                     <div class="alert alert-info">
-                       
-                        {{ $date->Name }}
-                        {{ $date->Positions }}
-                        {{ $date->EmploymentDate }}
-                        {{ $date->PhoneNubmer}}
-                        {{ $date->Email}}
-                        {{ $date->PhoneNubmer}}
-                        {{ $date->Salary}}
+
+                        {{ $date->name }}
+                        {{ $date->employmentDate }}
+                        {{ $date->phoneNubmer}}
+                        {{ $date->email}}
+                        {{ $date->phoneNubmer}}
+                        {{ $date->salary}}
 
                     </div>
                 </form>

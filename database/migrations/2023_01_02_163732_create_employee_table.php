@@ -16,12 +16,12 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->integer('Employment date');
-            $table->integer('Phone nubmer');
-            $table->string('Email');
-            $table->integer('Salary');
-            $table->integer('Photo')->default();
+            $table->string('name');
+            $table->LONGTEXT('employmentDate');
+            $table->LONGTEXT('phoneNubmer');
+            $table->string('email');
+            $table->integer('salary');
+            $table->integer('photo')->default();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('admin_created_id')->default(DB::raw('CURRENT_TIMESTAMP'));

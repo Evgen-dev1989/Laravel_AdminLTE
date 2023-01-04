@@ -18,15 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {return view('dashboard', ['data' => \App\Models\Employee::all()]);})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/dashboard', '\App\Http\Controllers\EmployeeController@emp')->middleware(['auth', 'verified']);
+//Route::get('/dashboard', '\App\Http\Controllers\EmployeeController@emp')->middleware(['auth', 'verified'])->name('dashboard');
 
 
-//Route::get('/dashboard/admin', \App\Http\Controllers\EmployeeController::class)->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 

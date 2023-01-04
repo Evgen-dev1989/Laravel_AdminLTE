@@ -13,16 +13,9 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function __invoke(){
+   // public function __invoke(){$Employee=DB::table('employees');return view('dashboard',['data'=>$Employee]);}
 
-
-        return view('dashboard');
-    }
-    public function emp(){
-        $Employee=DB::table('employees');
-
-        return view('dashboard', ['data'=>$Employee]);
-    }
+    public function emp(){$Employee=DB::table('employees');return view('dashboard', ['data'=>$Employee]);}
 
 
     public function index()
