@@ -20,10 +20,10 @@ class EmployeeFactory extends Factory
     {
         return [
             'Name' => $this->faker->Name,
-            'Employment date' => $this->faker->dateTime,
-            'Phone nubmer' => $this->faker->phoneNumber,
+            'employmentDate' => $this->faker->dateTime,
+            'phoneNubmer' => $this->faker->phoneNumber,
             'Email' => $this->faker->unique()->safeEmail,
-            'Salary' => $this->faker->randomDigit,
+            'Salary' => $this->faker->randomNumber(),
             'created_at' => now(),
             'updated_at' => now(),
             'admin_created_id' => now(),

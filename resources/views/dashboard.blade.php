@@ -3,43 +3,14 @@
 
         @section('title', 'Dashboard')
 
-        @section('content_header')
-            <h1> <x-slot name="header">
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                        {{ __('Dashboard') }}
-                    </h2>
-                </x-slot></h1>
-        @stop
 
-        @section('content')
-            <p>Welcome to this beautiful admin panel.</p>
-            @foreach($data as $date)
-                <form>
-                    <div class="alert alert-info">
 
-                        {{ $date->name }}
-                        {{ $date->employmentDate }}
-                        {{ $date->phoneNubmer}}
-                        {{ $date->email}}
-                        {{ $date->phoneNubmer}}
-                        {{ $date->salary}}
 
-                    </div>
-                </form>
-            @endforeach
-        @stop
         @php
             $heads = [
-            'Photo',
-            'Name',
-            'Positions',
-            'Employment date',
-            'Phone nubmer',
-            'Email',
-            'Salary',
 
-            ['label' => 'Photo', 'width' => 40],
-            ['label' => 'Name', 'width' => 40],
+            ['label' => 'Photo', 'width' => 10],
+            ['label' => 'Name', 'width' => 15],
             ['label' => 'Positions', 'width' => 40],
             ['label' => 'Employment date', 'width' => 40],
             ['label' => 'Phone nubmer', 'width' => 40],
@@ -58,18 +29,39 @@
                 <i class="fa fa-lg fa-fw fa-eye"></i>
             </button>';
 
-            $config = [
-            'data' => [
-            [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            ],
-            'order' => [[1, 'asc']],
-            'columns' => [null, null, null, ['orderable' => false]],
-            ];
+
+$data = App\Models\Employee::all()->toArray();
+
+
+      $output = array_slice($data,2, true);
+
+
+foreach ($data as $family)
+{
+    echo "<div>";
+    foreach ($family as $user)
+    {
+        echo "<div>$user</div>";
+    }
+    echo "</div>";
+}
+
+
+
+
+
+$config = [
+    'data' => [
+        [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+        [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+        [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+    ],
+    'order' => [[1, 'asc']],
+    'columns' => [null, null, null, ['orderable' => false]],
+];
         @endphp
 
-
+        {{-- Minimal example / fill data using the component slot --}}
         <x-adminlte-datatable id="table1" :heads="$heads">
             @foreach($config['data'] as $row)
                 <tr>
@@ -80,16 +72,19 @@
             @endforeach
         </x-adminlte-datatable>
 
-        <x-adminlte-datatable id="table2" :heads="$heads" head-theme="dark" :config="$config"
-                              striped hoverable bordered compressed/>
 
-        @section('css')
-            <link rel="stylesheet" href="/css/admin_custom.css">
+
+
+
+        @section('content')
+            <p>Welcome to this beautiful admin panel.</p>
+
+
         @stop
 
-        @section('js')
-            <script> console.log('Hi!'); </script>
-        @stop
+
+
+
 
 
 
