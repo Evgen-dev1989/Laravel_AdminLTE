@@ -30,23 +30,29 @@
             </button>';
 
 
-$data = App\Models\Employee::all()->toArray();//->toArray()
-
+$employee = App\Models\Employee::all()->toArray();//->toArray()
+$positions = \App\Models\Position::all();
 //$output = array_slice($user,5, true);
 
  ?>
     <table>
 <?php
 
-foreach ($data as $family)
+foreach ($employee as $data)
 {
-    echo "<tr>";
-    foreach ($family as $user)
-{
-    echo "<td>$user</td>";}echo "</tr>";
+    $b = array_slice($data, 0,6 );
+    print_r($b);
 }
 
-dd($user);
+
+dd($positions)
+    //echo "<tr>";
+  //  foreach ($family as $user)
+//{ $b=array_slice($family,1,true);
+ //  dd( $b);
+//    echo "<td>$user</td>";
+     // dd($user);}
+   // echo "</tr>";}
 
 
  //dd($user);
