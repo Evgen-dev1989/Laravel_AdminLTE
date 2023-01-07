@@ -30,29 +30,36 @@
             </button>';
 
 
-$data = App\Models\Employee::all()->toArray();
+$data = App\Models\Employee::all()->toArray();//->toArray()
 
+//$output = array_slice($user,5, true);
 
-      $output = array_slice($data,2, true);
-
+ ?>
+    <table>
+<?php
 
 foreach ($data as $family)
 {
-    echo "<div>";
+    echo "<tr>";
     foreach ($family as $user)
-    {
-        echo "<div>$user</div>";
-    }
-    echo "</div>";
+{
+    echo "<td>$user</td>";}echo "</tr>";
 }
 
+dd($user);
 
 
+ //dd($user);
+//$b=array_slice($user,2,true);
 
+?>
+</table>
+
+<?php
 
 $config = [
     'data' => [
-        [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+        [ '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
         [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
         [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
     ],

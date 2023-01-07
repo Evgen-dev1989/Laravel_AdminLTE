@@ -21,7 +21,7 @@ return new class extends Migration
             $table->LONGTEXT('phoneNubmer');
             $table->string('email');
             $table->integer('salary');
-            $table->integer('photo')->default();
+            //$table->integer('photo')->default();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('admin_created_id')->default(DB::raw('CURRENT_TIMESTAMP'));
