@@ -20,7 +20,11 @@ class PositionFactory extends Factory
     public function definition()
     {
         return [
-           // 'position' => $this->faker->position, 'created_at' => now(), 'updated_at' => now(), 'admin_created_id' => now(), 'admin_updated_id' => now()
+           'position' => $this->faker->jobTitle,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'admin_created_id' => now(),
+            'admin_updated_id' => now()
         ];
     }
 }

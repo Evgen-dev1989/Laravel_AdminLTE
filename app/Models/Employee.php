@@ -13,5 +13,8 @@ class Employee extends Model
     {
         return $this->hasOne(Position::class);
     }
-    protected $table = 'employees';
+
+    protected $fillable = [
+        'position_id'
+    ];
 }
