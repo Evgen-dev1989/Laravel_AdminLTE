@@ -11,7 +11,6 @@
 
             ['label' => 'Photo', 'width' => 10],
             ['label' => 'Name', 'width' => 15],
-            ['label' => 'Positions', 'width' => 40],
             ['label' => 'Employment date', 'width' => 40],
             ['label' => 'Phone nubmer', 'width' => 40],
             ['label' => 'Email', 'width' => 40],
@@ -30,7 +29,7 @@
             </button>';
 
 
-$employee = App\Models\Employee::all()->toArray();//->toArray()
+
 
 $positions = \App\Models\Position::all()->toArray();
 //$output = array_slice($user,5, true);
@@ -39,22 +38,31 @@ $positions = \App\Models\Position::all()->toArray();
     <table>
 <?php
 
+foreach ($positions as $pos){
+    $empt = array_slice($pos, 1,1 );
+       // dd($empt);
+}
 
-foreach ($data as $date) {
-  //  $emp = array_slice($date, 1,7 );
-    dd($date);
-   }
+
 
 ?>
 </table>
 
 <?php
 
+$employee = App\Models\Employee::all()->toArray();
+
+foreach ($employee as $date) {
+        $emp = array_slice($date, 1,7 );
+       // dd($emp);
+   }
+
+
 $config = [
     'data' => [
-        [ '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-        [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-        [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+    $emp,['<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',]
+     // [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+        //[3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
     ],
     'order' => [[1, 'asc']],
     'columns' => [null, null, null, ['orderable' => false]],
