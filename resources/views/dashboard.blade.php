@@ -31,6 +31,7 @@
 
 
 $employee = App\Models\Employee::all()->toArray();//->toArray()
+
 $positions = \App\Models\Position::all()->toArray();
 //$output = array_slice($user,5, true);
 
@@ -38,25 +39,12 @@ $positions = \App\Models\Position::all()->toArray();
     <table>
 <?php
 
-foreach ($employee as $data)
-{
-  $emp = array_slice($data, 1,7 );
 
-   foreach ($positions as $date){
- $pos = array_slice($date, 1,1 );
-   $emp[3] = $pos;
-   dd($emp);
-    }
+foreach ($data as $date) {
+  //  $emp = array_slice($date, 1,7 );
+    dd($date);
+   }
 
-
-}
-    //echo "<tr>";
-  //  foreach ($family as $user)
-//{ $b=array_slice($family,1,true);
- //  dd( $b);
-//    echo "<td>$user</td>";
-     // dd($user);}
-   // echo "</tr>";}
 ?>
 </table>
 

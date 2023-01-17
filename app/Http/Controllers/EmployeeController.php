@@ -15,7 +15,11 @@ class EmployeeController extends Controller
      */
    // public function __invoke(){$Employee=DB::table('employees');return view('dashboard',['data'=>$Employee]);}
 
-    public function emp(){$Employee=DB::table('employees');return view('dashboard', ['data'=>$Employee]);}
+    public function emp()
+    {
+        $Employee=DB::table('employees')->get();
+        return view('dashboard', ['data'=>$Employee]);
+    }
 
 
     public function index()
