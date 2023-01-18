@@ -28,65 +28,43 @@
                 <i class="fa fa-lg fa-fw fa-eye"></i>
             </button>';
 
+$employee = App\Models\Employee::all()->toArray();
 
+foreach ($employee as $date){
 
-
-$positions = \App\Models\Position::all()->toArray();
-//$output = array_slice($user,5, true);
-
- ?>
-    <table>
-<?php
-
-foreach ($positions as $pos){
-    $empt = array_slice($pos, 1,1 );
-       // dd($empt);
+    $b = array_slice($date,1,6 );
+var_dump($b);
 }
 
 
 
-?>
-</table>
-
-<?php
-
-$employee = App\Models\Employee::all()->toArray();
-
-foreach ($employee as $date) {
-        $emp = array_slice($date, 1,7 );
-       // dd($emp);
-   }
-
-
+   //$emp = array_slice($date, 1,6 );
 $config = [
-    'data' => [
-    $emp,['<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',]
+    'data' => [$b
+    //['<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>']
      // [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
         //[3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
     ],
     'order' => [[1, 'asc']],
     'columns' => [null, null, null, ['orderable' => false]],
 ];
+
         @endphp
-
-        {{-- Minimal example / fill data using the component slot --}}
-        <x-adminlte-datatable id="table1" :heads="$heads">
-            @foreach($config['data'] as $row)
-                <tr>
-                    @foreach($row as $cell)
-                        <td>{!! $cell !!}</td>
-                    @endforeach
-                </tr>
-            @endforeach
-        </x-adminlte-datatable>
-
-
-
-
 
         @section('content')
             <p>Welcome to this beautiful admin panel.</p>
-
+            <x-adminlte-datatable id="table1" :heads="$heads">
+                @foreach($config['data'] as $row)
+                    <tr>
+                        @foreach($row as $cell)
+                            <td>{!! $cell !!}</td>
+                        @endforeach
+                            <td>{!!  $btnEdit !!}</td>
+                            <td>{!! $btnDelete !!}</td>
+                            <td>{!! $btnDetails !!}</td>
+                    </tr>
+                @endforeach
+            </x-adminlte-datatable>
 
         @stop
 
