@@ -15,6 +15,12 @@ class Employee extends Model
     }
 
     protected $fillable = [
-        'position_id'
+        'position_id',
+        'photo',
+        'name',
+        'employment date',
+        'phone nubmer',
+        'email',
+        'salary'
     ];
 }

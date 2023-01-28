@@ -23,7 +23,7 @@ Route::get('/dashboard', 'App\Http\Controllers\EmployeeController@emp')->middlew
 
 //Route::get('/dashboard', '\App\Http\Controllers\EmployeeController@emp')->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::resource('Employee', 'EmployeeController');
 
 
 

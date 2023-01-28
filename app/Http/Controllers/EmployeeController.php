@@ -24,28 +24,47 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        //
+        $employees = Employee::all();
+
+        return view('employee.index', compact('employees'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'employment_date' => 'required',
+            'phone_nubmer' => 'required',
+            'email' => 'required',
+            'salary' =>'required',
+            'value'=>'required|max:30|min:2|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+        ]);
+        $employee = new Employee([
+            'photo' => $request->get('photo'),
+            'name' => $request->get('name'),
+            'employment_date' => $request->get('employment_date'),
+            'phone_nubmer' => $request->get('phone_nubmer'),
+            'email' => $request->get('email'),
+            'salary' => $request->get('salary')
+        ]);
+        $employee->save();
+        return redirect('/dashboard')->with('success', 'Employee saved.');
     }
 
     /**
