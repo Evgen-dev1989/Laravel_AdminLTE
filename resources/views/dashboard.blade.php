@@ -33,18 +33,19 @@ $employee = App\Models\Employee::all()->toArray();
 foreach ($employee as $date){
 
     $b = array_slice($date,1,6 );
-var_dump($b);
+    print_r($b);
+//foreach ($b as $a){
+//echo "<li>" . $a . "</li>";}
 }
-
 
 
    //$emp = array_slice($date, 1,6 );
 $config = [
-    'data' => [$b
+    'data' => [$b ]
     //['<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>']
      // [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
         //[3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-    ],
+    ,
     'order' => [[1, 'asc']],
     'columns' => [null, null, null, ['orderable' => false]],
 ];
