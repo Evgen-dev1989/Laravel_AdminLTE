@@ -73,7 +73,7 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employees
      * @return \Illuminate\Http\Response
      */
-    public function show(employee $employees)
+    public function show($id)
     {
         //
     }
@@ -82,11 +82,12 @@ class EmployeeController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\employee  $employees
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(employee $employees)
+    public function edit($id)
     {
-        //
+        $employee = Employee::find($id);
+        return view('employee.edit', compact('employee'));
     }
 
     /**
@@ -94,21 +95,42 @@ class EmployeeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\employee  $employees
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, employee $employees)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'employment_date' => 'required',
+            'phone_nubmer' => 'required',
+            'email' => 'required',
+            'salary' =>'required',
+            'value'=>'required|max:10|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+        ]);
+        $employee  = Employee::find($id);
+
+        $employee->photo = $request->get('photo');
+        $employee->name =  $request->get('name');
+        $employee->employment_date =  $request->get('employment_date');
+        $employee->phone_nubmer =  $request->get('phone_nubmer');
+        $employee->email =  $request->get('email');
+        $employee->salary =  $request->get('salary');
+         $employee->save();
+
+        return redirect('/dashboard')->with('success', 'Employee  updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\employee  $employees
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(employee $employees)
+    public function destroy($id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->delete(); 
+
+        return redirect('/dashboard')->with('success', 'Employee removed.');
     }
 }
