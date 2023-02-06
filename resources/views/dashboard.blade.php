@@ -53,14 +53,22 @@ $config = [
 
         @section('content')
             <p>Welcome to this beautiful admin panel.</p>
+            <div>
+                <a href="{{ route('$employee.create')}}" class="btn btn-primary mb-3">Add employee</a>
+            </div>
+            </div>
             <x-adminlte-datatable id="table1" :heads="$heads">
                 @foreach($config['data'] as $row)
                     <tr>
                         @foreach($row as $cell)
                             <td>{!! $cell !!}</td>
                         @endforeach
-                            <td>{!!  $btnEdit !!}</td>
-                            <td>{!! $btnDelete !!}</td>
+                            <td><a href="{{ route('$employee.edit',$employee->id)}}" class="btn btn-primary">{!!  $btnEdit !!} </a></td>
+                            <td>
+                                <a action="{{ route('$employee.destroy', $employee->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE'){!! $btnDelete !!}</a>
+                                </td>
 
                     </tr>
                 @endforeach

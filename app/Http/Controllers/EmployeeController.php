@@ -24,9 +24,9 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = Employee::all();
+        $Employee=DB::table('employees')->get();
 
-        return view('employee.index', compact('employees'));
+        return view('dashboard', ['data'=>$Employee]);
     }
 
     /**
@@ -129,7 +129,7 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         $employee = Employee::find($id);
-        $employee->delete(); 
+        $employee->delete();
 
         return redirect('/dashboard')->with('success', 'Employee removed.');
     }
