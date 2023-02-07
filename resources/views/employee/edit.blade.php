@@ -2,7 +2,7 @@
 @section('main')
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            <h1 class="display-3">Editing Stock</h1>
+            <h1 class="display-3">Editing employee</h1>
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -14,25 +14,37 @@
                 </div>
                 <br />
             @endif
-            <form method="post" action="{{ route('stocks.update', $stock->id) }}">
+            <form method="post" action="{{ route('employee.update', $employee->id) }}">
                 @method('PATCH')
                 @csrf
-                <div class="form-group">
 
-                    <label for="stock_name">Stock Name:*</label>
-                    <input type="text" class="form-control" name="stock_name" value="{{ $stock->stock_name }}" />
+                <button type="submit" class="btn btn-primary">Photo</button>
+                <div class="form-group">
+                    <label for="employee_name">Name :*</label>
+                    <input type="text" class="form-control" name="employee_name" value="{{ $employee->name }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="employee_phone">Phone nubmer:*</label>
+                    <input type="text" class="form-control" name="employee_phone" value="{{ $employee->employee_phone}}" />
                 </div>
 
                 <div class="form-group">
-                    <label for="ticket">Stock Ticket:*</label>
-                    <input type="text" class="form-control" name="ticket" value="{{ $stock->ticket }}" />
+                    <label for="email">Email:*</label>
+                    <input type="text" class="form-control" name="email" value="{{ $employee->email }}" />
                 </div>
 
                 <div class="form-group">
-                    <label for="value">Stock Value:</label>
-                    <input type="text" class="form-control" name="value" value="{{ $stock->value }}" />
+                    <label for="salary">Salary:</label>
+                    <input type="text" class="form-control" name="salary" alue="{{ $employee->salary }}"/>
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div class="form-group">
+                    <label for="date">Employment date:</label>
+                    <input type="date" class="form-control" name="date"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+
+
             </form>
         </div>
     </div>
